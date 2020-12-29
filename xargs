@@ -1,3 +1,15 @@
+# xargs takes lines from stdin and converts them into command line arguments
+echo "/home \n /tmp" | xargs ls # Will run ls /home /tmp
+
+# if you want to run the same command on a list of files
+find -name *.txt | xargs rm   # Delete
+find -name *.txt | xargs cat  # Combine
+find -name *.txt | xargs grep # Search
+find -name *.txt | xargs sed  # Replace
+
+# To replace "hello" with "hey" in all .txt files:
+find . -name '*.txt' | xargs sed -i s/hello/hey/g
+
 # To Find all file name ending with .pdf and remove them
 find -name *.pdf | xargs rm -rf
 
@@ -14,3 +26,13 @@ find -name *.pdf | xargs -I{} -n1 echo '&{}='
 # If find returns no result, do not run rm
 # This option is a GNU extension.
 find -name "*.pdf" | xargs --no-run-if-empty rm
+
+# To lint every JavaScript file in your Git repo:
+git ls-files | grep .py | xargs npx eslint
+
+# More useful xargs options:
+# max-args: makes xargs run a separate program for every input
+-n 1
+
+# max-procs: the max number of parallel processes xargs will start
+-p
