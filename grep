@@ -1,21 +1,46 @@
+# Grep lets you search files for text
+grep hello notes.md
+
 # To search a file for a pattern:
 grep <pattern> <file>
+
+# To perform a case-insensitive search:
+grep -i <pattern> <file>
 
 # To perform a case-insensitive search (with line numbers):
 grep -in <pattern> <file>
 
-# To recursively grep for string <pattern> in <dir>:
-grep -R <pattern> <dir>
+# Recursive search the files in a <dir>:
+grep -r <pattern> <dir>
+grep -R <pattern> <dir> # Likewise, but follow all symlinks
 
 # Read search patterns from a file (one per line):
 grep -f <pattern-file> <file>
 
-# Find lines NOT containing pattern:
+# Invert match: find lines that dont't match:
 grep -v <pattern> <file>
+
+# Only show the filenames of the files that matched
+grep -l <pattern> *
 
 # To grep with regular expressions:
 grep "^00" <file>                                               # Match lines starting with 00
 grep -E "[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}" <file> # Find IP add
+
+# Also know as egrep
+# Regular expressions like ".+" works and no need to use ".\+"
+grep -E <regex> <file>
+
+# Don't treat the match string as a regular expressions
+grep -F <pattern> <file>
+
+# To show context for your search:
+grep -B 2 <pattern> <file>  # Show 2 lines of context before a match
+grep -A 2 <pattern> <file>  # Show 2 lines of context after a match
+grep -C 2 <pattern> <file>  # Show 2 lines of context before and after a match
+
+# Only print the matching part of the line (not the whole line)
+grep -o <pattern> <file>
 
 # To find all files that match <pattern> in <dir>
 grep -rnw <dir> -e <pattern>
@@ -26,3 +51,6 @@ ps aux | grep '[h]ttpd'
 
 # Colour in red {bash} and keep all other lines
 ps aux | grep -E --color 'bash|$'
+
+# Search binaries: treat binary data like it's text instead of ignoring it
+grep -a <pattern> <file>
