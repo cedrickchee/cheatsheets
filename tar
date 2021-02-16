@@ -1,6 +1,10 @@
 ---
 tags: [ compression ]
 ---
+# The .tar file format combines many files into one file.
+# .tar files aren't compressed by themselves. Usually you gzip them
+# tar can compress or decompress
+
 # To extract an uncompressed archive:
 tar -xvf /path/to/foo.tar
 
