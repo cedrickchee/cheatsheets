@@ -1,3 +1,7 @@
+# less is a pager
+# It lets you view (not edit) text files or piped in text.
+# Many vim shortcuts work in less.
+
 # To disable the terminal refresh when exiting:
 less -X
 
@@ -7,3 +11,11 @@ s <filename>
 
 # Method 2 - This should work whether input is a pipe or an ordinary file:
 Type g or < (g or less-than) | $ (pipe then dollar) then cat > <filename> and Enter.
+
+# Displays bash escape codes as colours
+ls --color | less -r
+
+# Run a command when less starts
+less +G         # start at end of file
+less +30%       # start 20% into file
+less +/hello    # search for 'hello' right away
