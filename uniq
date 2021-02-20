@@ -1,3 +1,5 @@
+# uniq is for unique
+
 # To show all lines without duplication:
 # (`sort -u` and `uniq` have the same effect.)
 sort <file> | uniq
@@ -8,7 +10,7 @@ sort <file> | uniq -u
 # To show duplicated lines only:
 sort <file> | uniq -d
 
-# To count all lines:
+# To count each line it saw:
 sort <file> | uniq -c
 
 # To count not duplicated lines:
@@ -16,3 +18,14 @@ sort <file> | uniq -uc
 
 # To count only duplicated lines:
 sort <file> | uniq -dc
+
+# To uniquifies adjacent matching lines:
+# Notice there are still two 'a's.
+printf 'a\nb\nb\na\nc\nc' | uniq
+
+# Get a deduplicated list of lines:
+# sort -u does the same thing
+printf 'a\nb\nb\na\nc\nc' | sort | uniq
+
+# Get the top 3 most common lines in a file:
+sort <file> | uniq -c | sort -n | tail -n 3

@@ -1,3 +1,6 @@
+# sort sorts its input.
+# The default sort is alphabetical.
+
 # To sort a file:
 sort <file>
 
@@ -9,3 +12,9 @@ sort -r <file>
 
 # To sort a file randomly:
 sort -R <file>
+
+# Numeric sort:
+sort -n <file>
+
+# Human sort:
+du -sh * | sort -h

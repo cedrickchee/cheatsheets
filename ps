@@ -1,4 +1,7 @@
+# ps shows which processes are running
+
 # To list every process on the system:
+# 'u' means include username column. 'a' and 'x' together show all process.
 ps aux
 
 # To list a process tree:
@@ -13,3 +16,15 @@ ps -eo pid,user,command
 # Exclude grep from your grepped output of ps.
 # Add [] to the first letter. Ex: sshd -> [s]shd
 ps aux | grep '[h]ttpd'
+
+# Show all command line args for each process:
+# 'w' is for wide
+ps auxwwww
+
+# Show the environment variables:
+# 'e' is for environment
+ps auxe
+
+# Show an ASCII art process tree:
+# 'f' is for "forest"
+ps auxf

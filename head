@@ -1,3 +1,7 @@
+# head shows you the first 10 lines of a file.
+# If you pipe a program to head, the program will stop after printing 10 lines
+# (it gets sent SIGPIPE)
+
 # To show the first 10 lines of <file>:
 head <file>
 

@@ -1,11 +1,18 @@
+# lsof stands for list open files
+# What lsof tells you is, for each open file:
+# pid, file type (directory? socket? FIFO? regular?),
+file descriptor, user, filename / socket address
+
 # To list all IPv4 network files:
 sudo lsof -i4
 
 # To list all IPv6 network files:
 sudo lsof -i6
 
-# To list all open sockets:
+# To list all open network sockets:
+# Sockets are files.
 lsof -i
+lsof -i -n -P   # -n & -P mean "don't resolve host names/ports" (also -Pni)
 
 # To list all listening ports:
 lsof -Pnl +M -i4
@@ -25,9 +32,17 @@ lsof -u <username>
 # To list all files/network connections a command is using:
 lsof -c <command>
 
-# To list all files a process has open:
-lsof -p <pid>
+# To list the files a PID (Process ID) has open:
+lsof -p <PID>
 
 # To list all files open mounted at /mount/point:
 # (Particularly useful for finding which process(es) are using a mounted USB stick or CD/DVD.)
 lsof +f -- <mount-point>
+
+# To find deleted files:
+# You can recover open deleted files from /proc/<PID>/fd/<fd>. PID is process
+# that opened the file.
+lsof | grep deleted
+
+# Another way to list open sockets is:
+netstat -tunapl # tunapl sounds like "tuna, please ^-^"

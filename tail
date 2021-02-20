@@ -1,3 +1,6 @@
+# tail shows the last 10 lines.
+# Very useful for log files.
+
 # To show the last 10 lines of <file>:
 tail <file>
 
@@ -12,3 +15,14 @@ tail -c <number> <file>
 
 # To show the last 10 lines of <file> and to wait for <file> to grow:
 tail -f <file>
+
+# Keep trying to open file if it's inaccessible:
+tail --retry
+
+# Stop when process PID stops running
+tail --pid PID
+
+# Usually tail -f will follow a file descriptor.
+# --follow=name will keep following the same filename, example if the logfile
+# is rotated.
+tail --follow=<name>

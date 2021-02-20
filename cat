@@ -1,3 +1,5 @@
+# cat concatenates files
+
 # To display the contents of a file:
 cat <file>
 
@@ -6,3 +8,18 @@ cat -n <file>
 
 # To display file contents with line numbers (blank lines excluded)
 cat -b <file>
+
+# You can use cat as a basic text editor:
+cat > <file>    # Run that. Then, type the contents. Press Ctrl+d to finish
+
+# cats a gzipped file:
+# zcat is just 1-line shell script that runs `gzip -cd`, but easier to
+# remember.
+zcat
+
+# Write its stdin to both stdout and file:
+tee <file>
+
+# Redirect to a file owned by root
+sudo echo "hello" >> <file>        # will open file as your user, not as root
+echo "hello" | sudo tee -a <file>  # will open file as root
